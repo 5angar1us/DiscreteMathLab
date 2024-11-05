@@ -1,12 +1,11 @@
 ﻿using DiscreteMathLab3.GraphDomain;
-using DiscreteMathLab3.UI.Utils;
 using Shared;
 using Shared.AnsiConsole;
 using Spectre.Console;
 
 namespace DiscreteMathLab3.UI.InputMatrix.FromFile
 {
-    internal class FromFileInputMatrix : IPromptProcess<Optional<AdjacencyMatrix>>
+    public class FromFileInputMatrix : IPromptProcess<Optional<AdjacencyMatrix>>
     {
         private const string targetExtention = ".txt";
         private readonly string DEFAULT_FIGURE_FILENAME = Path.Combine(Environment.CurrentDirectory, "AdjacencyMatrix" + targetExtention);
