@@ -1,3 +1,6 @@
-﻿using DiscreteMathLab4.v3;
+﻿using DiscreteMathLab4.UI;
+using DiscreteMathLab4.v3;
+using Spectre.Console;
 
-new MainMenu().Run();
+new Test().Run();
+new MainMenu(AnsiConsole.Console).Run();

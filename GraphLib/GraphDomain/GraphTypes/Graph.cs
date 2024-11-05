@@ -98,8 +98,7 @@ public sealed partial class Graph
         }
 
         // Неориентированный граф: степень — количество инцидентных рёбер
-        // Там всегда в 2 раза больше
-
+        // Там всегда в 2 раза больше 
         return IncidenceMap[node].Count / 2;
 
     }

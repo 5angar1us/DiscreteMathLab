@@ -174,7 +174,6 @@ public class AdjacencyMatrixValidator : AbstractValidator<AdjacencyMatrix>
         return true;
     }
 
-    //TODO DFS может их вынести куда-то
     private void DFS(ReadOnlyCollection<ReadOnlyCollection<int>> matrix, bool[] visited, int vertexIndex)
     {
         visited[vertexIndex] = true;
