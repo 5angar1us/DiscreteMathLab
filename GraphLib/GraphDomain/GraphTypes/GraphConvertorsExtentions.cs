@@ -1,8 +1,7 @@
-﻿using DiscreteMathLab3.GraphDomain;
-using DiscreteMathLab3.GraphDomain.GraphTypes;
-using System.Xml.Linq;
+﻿using GraphLib.GraphDomain;
+using GraphLib.GraphDomain.GraphTypes;
 
-namespace DiscreteMathLab3.GraphTypes;
+namespace GraphLib.GraphTypes;
 
 public static class GraphConvertorsExtentions
 {

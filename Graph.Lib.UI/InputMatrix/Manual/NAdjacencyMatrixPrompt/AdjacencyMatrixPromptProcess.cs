@@ -1,8 +1,8 @@
-﻿using DiscreteMathLab3.GraphDomain;
+﻿using GraphLib.GraphDomain;
 using Shared.AnsiConsole;
 using Spectre.Console;
 
-namespace DiscreteMathLab3.UI.InputMatrix.Manual.NAdjacencyMatrixPrompt;
+namespace GraphLib.UI.InputMatrix.Manual.NAdjacencyMatrixPrompt;
 
 internal class AdjacencyMatrixPromptProcess : IPromptProcess<AdjacencyMatrix>
 {

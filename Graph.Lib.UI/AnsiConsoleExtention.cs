@@ -1,8 +1,8 @@
-﻿using DiscreteMathLab3.GraphDomain;
+﻿using GraphLib.GraphDomain;
 
-using DiscreteMathLab3.UI.InputMatrix.Manual.NAdjacencyMatrixPrompt;
+using GraphLib.UI.InputMatrix.Manual.NAdjacencyMatrixPrompt;
 
-namespace DiscreteMathLab3.UI.Utils
+namespace DiscreteMathLab3.UI
 {
     public static class AnsiConsoleExtention
     {

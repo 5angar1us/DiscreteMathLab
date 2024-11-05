@@ -1,15 +1,10 @@
 ﻿using Ardalis.SmartEnum;
-using DiscreteMathLab3.GraphTypes;
-using DiscreteMathLab3.UI;
-using DiscreteMathLab4.v4;
+using GraphLib.GraphTypes;
+using GraphLib.UI;
 using Shared;
 using Shared.AnsiConsole;
 using Spectre.Console;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DiscreteMathLab4.UI;
 public class MainMenu

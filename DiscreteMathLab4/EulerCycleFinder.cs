@@ -1,12 +1,12 @@
-﻿using DiscreteMathLab3;
-using DiscreteMathLab3.GraphDomain;
-using DiscreteMathLab3.GraphDomain.GraphTypes;
-using DiscreteMathLab3.GraphTypes;
+﻿
+using GraphLib;
+using GraphLib.GraphDomain.GraphTypes;
+using GraphLib.GraphTypes;
 using Shared;
 using Spectre.Console;
 
 
-namespace DiscreteMathLab4.v3;
+namespace DiscreteMathLab4;
 
 public class EulerCycleFinder
 {
@@ -94,7 +94,7 @@ public class EulerCycleFinder
         return true;
     }
 
-    //TODO на каком алгоритме он основан?????
+    //построения эйлерова пути
     private static List<Node> GetPath(Graph graph)
     {
         var path = new List<Node>();

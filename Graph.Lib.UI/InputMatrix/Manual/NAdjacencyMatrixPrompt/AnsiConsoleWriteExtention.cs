@@ -1,9 +1,9 @@
-﻿using DiscreteMathLab3.GraphDomain;
+﻿using GraphLib.GraphDomain;
 using Shared;
 using Spectre.Console;
 
 
-namespace DiscreteMathLab3.UI.InputMatrix.Manual.NAdjacencyMatrixPrompt
+namespace GraphLib.UI.InputMatrix.Manual.NAdjacencyMatrixPrompt
 {
 
     public record InputAdjacencyMatrixTableView(InputAdjacencyMatrixTypes Matrix, Optional<CellIndexes> CurrentCell)

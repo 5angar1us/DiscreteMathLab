@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscreteMathLab", "Discrete
 		{4884A673-DF27-4348-86EC-79948E6FF674} = {4884A673-DF27-4348-86EC-79948E6FF674}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graph.Lib.UI", "Graph.Lib.UI\Graph.Lib.UI.csproj", "{B78313E0-FD7F-49C9-BD89-9C44A7054439}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphLib.UI", "Graph.Lib.UI\GraphLib.UI.csproj", "{B78313E0-FD7F-49C9-BD89-9C44A7054439}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

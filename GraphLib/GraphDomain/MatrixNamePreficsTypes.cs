@@ -1,4 +1,4 @@
-﻿namespace DiscreteMathLab3.GraphDomain;
+﻿namespace GraphLib.GraphDomain;
 
 public abstract record NamePrefixs(string Row, string Column);
 public record AdjacencyMatrixNamePrefixes : NamePrefixs

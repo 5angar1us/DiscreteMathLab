@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Graph.Lib.UI\Graph.Lib.UI.csproj" />
+    <ProjectReference Include="..\Graph.Lib.UI\GraphLib.UI.csproj" />
     <ProjectReference Include="..\GraphLib\GraphLib.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>

@@ -1,7 +1,7 @@
-﻿using DiscreteMathLab3.GraphDomain;
+﻿using GraphLib.GraphDomain;
 using Spectre.Console;
 
-namespace DiscreteMathLab3.UI.Utils
+namespace GraphLib.UI
 {
     public class CliDisplay
     {

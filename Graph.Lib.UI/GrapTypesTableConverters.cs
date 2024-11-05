@@ -1,9 +1,9 @@
-﻿using DiscreteMathLab3.GraphDomain.GraphTypes;
-using DiscreteMathLab3.GraphDomain;
+﻿using GraphLib.GraphDomain.GraphTypes;
+using GraphLib.GraphDomain;
 using Spectre.Console;
 using System.Data;
 
-namespace DiscreteMathLab3.UI.Utils
+namespace GraphLib.UI
 {
     internal static class GrapTypesTableConverters
     {

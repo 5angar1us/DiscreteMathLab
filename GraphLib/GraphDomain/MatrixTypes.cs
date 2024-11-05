@@ -2,7 +2,7 @@
 using Shared;
 using System.Collections.ObjectModel;
 
-namespace DiscreteMathLab3.GraphDomain;
+namespace GraphLib.GraphDomain;
 
 public abstract class Matrix
 {

@@ -1,4 +1,4 @@
-﻿namespace DiscreteMathLab3.UI.InputMatrix.Manual.NAdjacencyMatrixPrompt;
+﻿namespace GraphLib.UI.InputMatrix.Manual.NAdjacencyMatrixPrompt;
 
 public record CellIndexes(int Row, int Column)
 {

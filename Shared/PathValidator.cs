@@ -1,6 +1,5 @@
 ﻿using Shared.AnsiConsole;
 using Spectre.Console;
-using System.Reflection;
 
 namespace Shared;
 

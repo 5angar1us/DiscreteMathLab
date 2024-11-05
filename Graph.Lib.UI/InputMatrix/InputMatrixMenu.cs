@@ -1,12 +1,12 @@
 ﻿using Ardalis.SmartEnum;
-using DiscreteMathLab3.GraphTypes;
-using DiscreteMathLab3.GraphDomain;
-using DiscreteMathLab3.UI.InputMatrix.FromFile;
-using DiscreteMathLab3.UI.InputMatrix.Manual;
+using GraphLib.GraphTypes;
+using GraphLib.GraphDomain;
+using GraphLib.UI.InputMatrix.FromFile;
+using GraphLib.UI.InputMatrix.Manual;
 using Shared;
 using Spectre.Console;
 
-namespace DiscreteMathLab3.UI;
+namespace GraphLib.UI;
 
 public class InputMatrixMenu
 {

@@ -1,9 +1,9 @@
-﻿using DiscreteMathLab3.GraphDomain;
+﻿using GraphLib.GraphDomain;
 using Shared;
 using Shared.AnsiConsole;
 using Spectre.Console;
 
-namespace DiscreteMathLab3.UI.InputMatrix.FromFile
+namespace GraphLib.UI.InputMatrix.FromFile
 {
     public class FromFileInputMatrix : IPromptProcess<Optional<AdjacencyMatrix>>
     {

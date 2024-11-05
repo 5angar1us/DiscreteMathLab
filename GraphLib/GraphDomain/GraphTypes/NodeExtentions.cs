@@ -1,6 +1,6 @@
-﻿using DiscreteMathLab3.GraphTypes;
+﻿using GraphLib.GraphTypes;
 
-namespace DiscreteMathLab3.GraphDomain.GraphTypes;
+namespace GraphLib.GraphDomain.GraphTypes;
 
 public static class NodeExtentions
 {

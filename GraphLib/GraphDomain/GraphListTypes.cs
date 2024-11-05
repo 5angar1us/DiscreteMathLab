@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using DiscreteMathLab3.GraphDomain.GraphTypes;
+using GraphLib.GraphDomain.GraphTypes;
 
-namespace DiscreteMathLab3.GraphDomain
+namespace GraphLib.GraphDomain
 {
     public abstract class GraphList<T> : IEnumerable<T>, IEnumerable, IReadOnlyCollection<T>
     {

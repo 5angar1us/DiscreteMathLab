@@ -1,9 +1,9 @@
 ﻿using Spectre.Console;
 using Ardalis.SmartEnum;
-using DiscreteMathLab3.UI.Utils;
-using DiscreteMathLab3.GraphTypes;
 using Shared;
 using Shared.AnsiConsole;
+using GraphLib.GraphTypes;
+using GraphLib.UI;
 
 namespace DiscreteMathLab3.UI;
 

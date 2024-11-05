@@ -1,9 +1,8 @@
-﻿using DiscreteMathLab3.UI.Utils;
-using Spectre.Console;
+﻿using Spectre.Console;
 using Shared.AnsiConsole;
 
 
-namespace DiscreteMathLab3.UI.InputMatrix.Manual.NAdjacencyMatrixPrompt;
+namespace GraphLib.UI.InputMatrix.Manual.NAdjacencyMatrixPrompt;
 
 internal class AdjacencyMatrixFillPrompt : IPrompt<InputAdjacencyMatrixTypes>
 {

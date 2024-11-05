@@ -1,9 +1,6 @@
-﻿using DiscreteMathLab3.GraphDomain;
-using DiscreteMathLab3.GraphTypes;
-using DiscreteMathLab4.v3;
-using DiscreteMathLab4.v4;
+﻿using GraphLib.GraphTypes;
+using GraphLib.GraphDomain;
 using Spectre.Console;
-using System.Xml.Linq;
 
 namespace DiscreteMathLab4.UI;
 
@@ -99,7 +96,7 @@ public static class DebugConst
             int[,] adjacencymatrix = adjacencyMatrices[i];
 
             var adjMatrixResult = AdjacencyMatrix.Create(ArrayConverter.ConvertToJaggedArray(adjacencymatrix), AdjacencyMatrixNamePrefixes.Create());
-            if (adjMatrixResult.IsFailure) throw new ArgumentException(); //TODO
+            if (adjMatrixResult.IsFailure) throw new ArgumentException();
 
             AdjacencyMatrix adjMatrix = adjMatrixResult.Value;
 

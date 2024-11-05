@@ -1,6 +1,6 @@
 ﻿using Spectre.Console;
 
-namespace DiscreteMathLab3.UI.InputMatrix.Manual;
+namespace GraphLib.UI.InputMatrix.Manual;
 
 internal class HideCursor : IDisposable
 {

@@ -1,11 +1,9 @@
-﻿using DiscreteMathLab2.Menus;
-using DiscreteMathLab2.Domain;
+﻿using DiscreteMathLab2.Domain;
 using DiscreteMathLab2.UI.InputFigures.FromFile.Parser;
 using DiscreteMathLab2.UI.InputFigures.FromFile.Parser.Exceptions;
 using Shared;
 using Newtonsoft.Json;
 using Spectre.Console;
-using System;
 using Shared.AnsiConsole;
 
 namespace DiscreteMathLab2.UI.InputFigures.FromFile

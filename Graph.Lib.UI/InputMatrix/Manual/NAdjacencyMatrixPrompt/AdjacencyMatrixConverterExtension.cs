@@ -1,7 +1,7 @@
-﻿using DiscreteMathLab3.GraphDomain;
+﻿using GraphLib.GraphDomain;
 using Shared;
 
-namespace DiscreteMathLab3.UI.InputMatrix.Manual.NAdjacencyMatrixPrompt;
+namespace GraphLib.UI.InputMatrix.Manual.NAdjacencyMatrixPrompt;
 
 public static class AdjacencyMatrixConverterExtension
 {

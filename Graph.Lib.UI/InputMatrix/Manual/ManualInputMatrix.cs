@@ -1,11 +1,10 @@
-﻿using DiscreteMathLab3.GraphDomain;
-using DiscreteMathLab3.UI.InputMatrix.Manual.NAdjacencyMatrixPrompt;
-using DiscreteMathLab3.UI.Utils;
+﻿using GraphLib.GraphDomain;
+using GraphLib.UI.InputMatrix.Manual.NAdjacencyMatrixPrompt;
 using Shared;
 using Shared.AnsiConsole;
 using Spectre.Console;
 
-namespace DiscreteMathLab3.UI.InputMatrix.Manual;
+namespace GraphLib.UI.InputMatrix.Manual;
 
 
 public class ManualInputMatrix : IPromptProcess<Optional<AdjacencyMatrix>>

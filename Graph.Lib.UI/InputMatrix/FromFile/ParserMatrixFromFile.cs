@@ -1,7 +1,7 @@
-﻿using DiscreteMathLab3.GraphDomain;
+﻿using GraphLib.GraphDomain;
 using Shared;
 
-namespace DiscreteMathLab3.UI.InputMatrix.FromFile
+namespace GraphLib.UI.InputMatrix.FromFile
 {
     internal class ParserMatrixFromFile
     {

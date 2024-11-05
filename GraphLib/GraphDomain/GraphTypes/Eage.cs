@@ -1,4 +1,4 @@
-﻿namespace DiscreteMathLab3.GraphDomain.GraphTypes;
+﻿namespace GraphLib.GraphDomain.GraphTypes;
 
 public class Edge : IEquatable<Edge>, IComparable<Edge>
 {

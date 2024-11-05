@@ -1,6 +1,6 @@
 ﻿using Ardalis.SmartEnum;
-using DiscreteMathLab3.GraphTypes;
-using DiscreteMathLab3.UI.Utils;
+using GraphLib.GraphTypes;
+using GraphLib.UI;
 using Shared;
 using Spectre.Console;
 

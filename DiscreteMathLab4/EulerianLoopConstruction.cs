@@ -1,33 +1,29 @@
-﻿using DiscreteMathLab3.GraphDomain;
-using DiscreteMathLab3.GraphTypes;
-using DiscreteMathLab4.v3;
+﻿using GraphLib.GraphTypes;
 using Spectre.Console;
-using static DiscreteMathLab4.UI.MainMenu;
 
-namespace DiscreteMathLab4.v4
+namespace DiscreteMathLab4;
+
+internal class EulerianLoopConstruction
 {
-    internal class EulerianLoopConstruction
+    private IAnsiConsole console;
+
+    public EulerianLoopConstruction(IAnsiConsole console)
     {
-        private IAnsiConsole console;
+        this.console = console;
+    }
 
-        public EulerianLoopConstruction(IAnsiConsole console)
+    internal void Construct(Graph graph)
+    {
+        var eulercycle = EulerCycleFinder.FindEulerCycle(graph);
+
+        if (eulercycle.HasValue)
         {
-            this.console = console;
+            console.WriteLine("Эйлеров цикл: " + string.Join(" ", eulercycle.GetValueOrThrow()));
         }
-
-        internal void Construct(Graph graph)
+        else
         {
-            var eulercycle = EulerCycleFinder.FindEulerCycle(graph);
-
-            if (eulercycle.HasValue)
-            {
-                console.WriteLine("Эйлеров цикл: " + string.Join(" ", eulercycle.GetValueOrThrow()));
-            }
-            else
-            {
-                console.WriteLine("Эйлеров цикл невозможен");
-            }
-            console.WriteLine(new string('-', 40));
+            console.WriteLine("Эйлеров цикл невозможен");
         }
+        console.WriteLine(new string('-', 40));
     }
 }

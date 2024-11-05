@@ -1,9 +1,8 @@
-﻿using DiscreteMathLab3.GraphDomain.GraphTypes;
+﻿using GraphLib.GraphDomain.GraphTypes;
 using Dunet;
 using Shared;
-using static DiscreteMathLab3.GraphTypes.Graph.Degree;
 
-namespace DiscreteMathLab3.GraphTypes;
+namespace GraphLib.GraphTypes;
 
 public sealed partial class Graph
 {
