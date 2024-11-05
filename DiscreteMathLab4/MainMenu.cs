@@ -185,7 +185,7 @@ class MainMenu
                 return null;
 
             // Create a copy of the graph to modify
-            var tempGraph = new Graph(graph.GetEdges(), graph.GraphType);
+            var tempGraph = new Graph(graph.GetEdges());
 
             // Start from the first vertex with at least one edge
             var path = GetPath(tempGraph);
@@ -251,26 +251,8 @@ class MainMenu
             {
                 WriteDebugIfNeeded(DebugConst.DebugNeed.CorrectDegre, $"[{node.ToString()}]: Neigbors: {getNeigbors(graph, node)} Degree: {graph.GetDegree(node)} ", isSpaceAfter: false);
 
-                var degree = graph.GetDegree(node);
-
-                var isSuccess = false;
-
-                graph.GetDegree(node).Match(
-                    Unoriginalized =>
-                    {
-                        isSuccess = Unoriginalized.Degree % 2 == 0;
-                    },
-                    Directional =>
-                    {
-                        //TODO Правильно????
-                        isSuccess = Directional.InDegree + Directional.OutDegree % 2 == 0;
-                    },
-                    Mixed =>
-                    {
-                        // TODO Правильно ????
-                        isSuccess = Mixed.Degree % 2 != 0 || Mixed.InDegree + Mixed.OutDegree % 2 == 0;
-                    }
-                    );
+                var isSuccess = graph.GetDegree(node) % 2 == 0;
+                   
 
                 if (isSuccess == false)
                 {
@@ -303,7 +285,7 @@ class MainMenu
                 if (neighbor != null)
                 {
                     var edge = graph.GetEdge(new HashSet<Node> { currentNode, neighbor });
-                    graph.RemoveEdge(edge);
+                    graph.RemoveEdge(edge.GetValueOrThrow());
                     stack.Push(neighbor);
                 }
                 else

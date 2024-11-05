@@ -1,15 +1,9 @@
 ﻿using DiscreteMathLab3.GraphDomain.GraphTypes;
 using Dunet;
+using Shared;
 using static DiscreteMathLab3.GraphTypes.Graph.Degree;
 
 namespace DiscreteMathLab3.GraphTypes;
-
-public enum EGraphType
-{
-    Unoriginalized,
-    Directional,
-    Mixed
-}
 
 public sealed partial class Graph
 {
@@ -17,19 +11,15 @@ public sealed partial class Graph
     private HashSet<Node> Nodes { get; init; }
     private Dictionary<Node, HashSet<Edge>> IncidenceMap { get; init; }
 
-    public EGraphType GraphType { get; }
-
-    public Graph(EGraphType graphType)
+    public Graph()
     {
-        this.GraphType = graphType;
-
         this.IncidenceMap = new Dictionary<Node, HashSet<Edge>>();
         this.Edges = new List<Edge>();
         this.Nodes = new HashSet<Node>();
     }
 
-    public Graph(List<Edge> edges, EGraphType graphType)
-        : this(graphType)
+    public Graph(List<Edge> edges)
+        : this()
     {
         foreach (var e in edges)
         {
@@ -37,8 +27,8 @@ public sealed partial class Graph
         }
     }
 
-    public Graph(List<Edge> edges, HashSet<Node> nodes, EGraphType graphType)
-        : this(edges, graphType)
+    public Graph(List<Edge> edges, HashSet<Node> nodes)
+        : this(edges)
     {
         foreach (var node in nodes)
         {
@@ -60,6 +50,13 @@ public sealed partial class Graph
 
 
     public List<Edge> GetEdges()
+    {
+        var arces = GetArces();
+
+        return FilterReverseArces(arces, this);
+    }
+
+    public List<Edge> GetArces()
     {
         return this.Edges
             .OrderBy(edge => edge.From)
@@ -93,46 +90,21 @@ public sealed partial class Graph
         partial record DegreeMixed(int Degree, int InDegree, int OutDegree);
     }
 
-    public Degree GetDegree(Node node)
+    public int GetDegree(Node node)
     {
         if (!Nodes.Contains(node))
         {
             throw new ArgumentException("The specified node does not exist in the graph");
         }
 
-        if (GraphType == EGraphType.Unoriginalized)
-        {
-            // Неориентированный граф: степень — количество инцидентных рёбер
-            // Там всегда в 2 раза больше
-            // TODO
-            var degree = IncidenceMap[node].Count / 2;
+        // Неориентированный граф: степень — количество инцидентных рёбер
+        // Там всегда в 2 раза больше
 
-            return new DegreeUnoriginalized(degree);
-        }
-        else if (GraphType == EGraphType.Directional)
-        {
-            // Ориентированный граф: нужно разделить на входящую и исходящую степень
-            // TODO
-            var inDegree = IncidenceMap[node].Count(e => e.To.Equals(node));
-            var outDegree = IncidenceMap[node].Count(e => e.From.Equals(node));
+        return IncidenceMap[node].Count / 2;
 
-            return new DegreeDirectional(inDegree, outDegree);
-        }
-        else if (GraphType == EGraphType.Mixed)
-        {
-            // Смешанный граф: комбинируем оба подхода
-            // TODO
-            var degree = IncidenceMap[node].Count(e => !e.IsDirected);
-            var inDegree = IncidenceMap[node].Count(e => e.IsDirected && e.To.Equals(node));
-            var outDegree = IncidenceMap[node].Count(e => e.IsDirected && e.From.Equals(node));
-
-            return new DegreeMixed(degree, inDegree, outDegree);
-        }
-
-        throw new InvalidOperationException("Unexpected graph type: " + GraphType);
     }
 
-    public Edge? GetEdge(HashSet<Node> nodes)
+    public Optional<Edge> GetEdge(HashSet<Node> nodes)
     {
         if (nodes.Count != 2)
         {
@@ -142,16 +114,18 @@ public sealed partial class Graph
         }
 
         var nodeList = nodes.ToList();
-        var maybeEdge = this.GetEdgeOrTrow(nodeList[0], nodeList[1]);
-        if (maybeEdge == null)
+        var maybeEdge = this.GetEdge(nodeList[0], nodeList[1]);
+        if (maybeEdge.HasValue)
         {
-            return this.GetEdgeOrTrow(nodeList[1], nodeList[0]);
+            return maybeEdge ;
         }
 
-        return maybeEdge;
+        var maybeEadgeReverse = this.GetEdge(nodeList[1], nodeList[0]);
+
+        return maybeEadgeReverse;
     }
 
-    public Edge GetEdgeOrTrow(Node node1, Node node2)
+    public Optional<Edge> GetEdge(Node node1, Node node2)
     {
         var edge = new Edge(node1, node2);
         foreach (var e in this.Edges)
@@ -162,7 +136,7 @@ public sealed partial class Graph
             }
         }
 
-        throw new ArgumentException("don't have edge for this nodes");
+        return Optional<Edge>.Empty();
     }
 
     internal bool AddEdge(Edge edge)
@@ -295,5 +269,21 @@ public sealed partial class Graph
         }
     }
 
+    private static List<Edge> FilterReverseArces(List<Edge> edges, Graph graph)
+    {
+        var filteredEdges = edges.Where(edge =>
+        {
+            var reverseEdge = graph.GetEdge(edge.To, edge.From);
 
+            if (reverseEdge.IsEmpty) return false;
+
+            var isEqualsOrBiger = edge.CompareTo(reverseEdge.GetValueOrThrow()) <= 0;
+
+            if (isEqualsOrBiger) return true;
+
+            return false;
+        });
+
+        return filteredEdges.ToList();
+    }
 }

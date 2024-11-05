@@ -114,6 +114,10 @@ public class AdjacencyMatrixValidator : AbstractValidator<AdjacencyMatrix>
         RuleFor(matrix => matrix.Data)
             .Must(HavePathFromAtLeastOneNodeToAllOthers)
             .WithMessage("There must be a path from at least one node to all other nodes.");
+
+        RuleFor(matrix => matrix.Data)
+            .Must(BeUndirected)
+            .WithMessage("The graph must be undirected.");
     }
 
     private bool BeSquare(ReadOnlyCollection<ReadOnlyCollection<int>> matrix)
@@ -155,6 +159,19 @@ public class AdjacencyMatrixValidator : AbstractValidator<AdjacencyMatrix>
         }
 
         return false;
+    }
+
+    private bool BeUndirected(ReadOnlyCollection<ReadOnlyCollection<int>> matrix)
+    {
+        for (int i = 0; i < matrix.Count; i++)
+        {
+            for (int j = i + 1; j < matrix.Count; j++)
+            {
+                if (matrix[i][j] != matrix[j][i])
+                    return false;
+            }
+        }
+        return true;
     }
 
     //TODO DFS может их вынести куда-то

@@ -28,47 +28,7 @@ public static class GraphConvertorsExtentions
             }
         }
 
-        return new Graph(edges, nodes.ToHashSet(), DetermineGraphType(matrix));
-    }
-
-    //TODO что тут происходит???
-    private static EGraphType DetermineGraphType(AdjacencyMatrix matrix)
-    {
-        var isDirected = false;
-        var isUndirected = true;
-
-        for (int i = 0; i < matrix.NodeCount; i++)
-        {
-            for (int j = 0; j < matrix.NodeCount; j++)
-            {
-                if (matrix[i, j] != matrix[j, i])
-                {
-                    isUndirected = false;
-                }
-
-                if (matrix[i, j] == 1 && matrix[j, i] == 0)
-                {
-                    isDirected = true;
-                }
-            }
-        }
-
-        if (isDirected && isUndirected)
-        {
-            return EGraphType.Mixed;
-        }
-        else if (isDirected)
-        {
-            return EGraphType.Directional;
-        }
-        else if (isUndirected)
-        {
-            return EGraphType.Unoriginalized;
-        }
-        else
-        {
-            throw new InvalidOperationException("Unable to determine graph type.");
-        }
+        return new Graph(edges, nodes.ToHashSet());
     }
 
     public static AdjacencyMatrix ToInputAdjacencyMatrix(this Graph graph)
@@ -90,12 +50,7 @@ public static class GraphConvertorsExtentions
             int vertex2Index = nodeAndIndexPairs[edge.To];
 
             adjacencyMatrix[vertex1Index][vertex2Index] = 1;
-
-            // TODO Mixed??????
-            if (graph.GraphType == EGraphType.Unoriginalized)
-            {
-                adjacencyMatrix[vertex2Index][vertex1Index] = 1;
-            }
+            adjacencyMatrix[vertex2Index][vertex1Index] = 1;
         });
 
         return AdjacencyMatrix.Create(adjacencyMatrix, AdjacencyMatrixNamePrefixes.Create()).Value;
@@ -103,9 +58,7 @@ public static class GraphConvertorsExtentions
 
     public static IncidentMatrix ToIncidentMatrix(this Graph graph)
     {
-        var excludeOneOfUndirectedEdges = graph.GraphType == EGraphType.Mixed || graph.GraphType == EGraphType.Unoriginalized;
-
-        var edges = excludeOneOfUndirectedEdges ? FilterReverseEdges(graph) : graph.GetEdges();
+        var edges = graph.GetEdges();
 
         int vertexCount = graph.GetNodes().Count;
         int edgeCount = edges.Count;
@@ -145,14 +98,14 @@ public static class GraphConvertorsExtentions
     public static RelationshipLists ToRelationshipLists(this Graph graph)
     {
         var nodes = graph.GetNodes().ToList();
-        var edges = graph.GetEdges().ToList();
+        var arces = graph.GetArces();
 
         var relationListItems = nodes.Select(node =>
         {
-            var neighborsFrom = edges.Where(edge => edge.From.Equals(node))
+            var neighborsFrom = arces.Where(arc => arc.From.Equals(node))
                 .Select(edge => edge.To);
 
-            var neighborsTo = edges.Where(edge => edge.To.Equals(node))
+            var neighborsTo = arces.Where(arc => arc.To.Equals(node))
                 .Select(edge => edge.From);
 
             var neighbors = neighborsTo.Concat(neighborsTo)
@@ -169,9 +122,7 @@ public static class GraphConvertorsExtentions
     {
         var nodes = graph.GetNodes().ToList();
 
-        var excludeOneOfUndirectedEdges = graph.GraphType == EGraphType.Mixed || graph.GraphType == EGraphType.Unoriginalized;
-
-        var edges = excludeOneOfUndirectedEdges ? FilterReverseEdges(graph) : graph.GetEdges();
+        var edges = graph.GetEdges();
 
         var incidentsListItems = nodes.Select(node =>
         {
@@ -191,24 +142,7 @@ public static class GraphConvertorsExtentions
         return new IncidentsLists(incidentsListItems);
     }
 
-    private static List<Edge> FilterReverseEdges(Graph graph)
-    {
-        var edges = graph.GetEdges();
-        var filteredEdges = edges.Where(edge =>
-        {
-            var reverseEdge = graph.GetEdgeOrTrow(edge.To, edge.From);
 
-            if (reverseEdge == null) return false;
-
-            var isEqualsOrBiger = edge.CompareTo(reverseEdge) <= 0;
-
-            if (isEqualsOrBiger) return true;
-
-            return false;
-        });
-
-        return filteredEdges.ToList();
-    }
 
     private static Dictionary<Node, int> GetNodeIndexPairs(Graph graph)
     {
