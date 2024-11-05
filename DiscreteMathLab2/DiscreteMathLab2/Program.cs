@@ -1,0 +1,2 @@
+﻿
+new MainMenu().Run();

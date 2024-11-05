@@ -1,0 +1,29 @@
+{
+  "E": {
+    "type": "circle",
+    "x0": 3.0,
+    "y0": 5.0,
+    "radius": 3.0
+  },
+  "B": {
+    "type": "rectangle",
+    "x0": 2.0,
+    "y0": 2.0,
+    "width": 2,
+    "height": 2
+  },
+  "C": {
+    "type": "rectangle",
+    "x0": 6,
+    "y0": 4,
+    "width": 4,
+    "height": 6
+  },
+  "D": {
+    "type": "circle",
+    "x0": 4,
+    "y0": 10,
+    "radius": 4
+  }
+}
+

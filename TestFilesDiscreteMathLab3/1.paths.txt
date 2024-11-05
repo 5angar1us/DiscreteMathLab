@@ -1,0 +1,20 @@
+E:\Учёба 2.0\академическая разница\Дискретная математика\lab2\TestFiles\1.paths_script.bat
+  
+E:\Учёба 2.0\академическая разница\Дискретная математика\lab2\TestFiles\empty_file.json
+  
+E:\Учёба 2.0\академическая разница\Дискретная математика\lab2\TestFiles\invalid_json.json
+  
+E:\Учёба 2.0\академическая разница\Дискретная математика\lab2\TestFiles\Template.json
+  
+E:\Учёба 2.0\академическая разница\Дискретная математика\lab2\TestFiles\Test files.txt
+  
+E:\Учёба 2.0\академическая разница\Дискретная математика\lab2\TestFiles\test5.txt
+  
+E:\Учёба 2.0\академическая разница\Дискретная математика\lab2\TestFiles\test_figure1.json
+  
+E:\Учёба 2.0\академическая разница\Дискретная математика\lab2\TestFiles\test_figure2.json
+  
+E:\Учёба 2.0\академическая разница\Дискретная математика\lab2\TestFiles\test_figures_collection1.json
+  
+E:\Учёба 2.0\академическая разница\Дискретная математика\lab2\TestFiles\test_figures_collection2.json
+  

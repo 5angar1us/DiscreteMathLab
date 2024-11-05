@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscreteMathLab2", "DiscreteMathLab2\DiscreteMathLab2.csproj", "{367D6E5C-2634-4123-BEEC-E2C0C5F23A77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscreteMathLab2Test", "DiscreteMathLab2Test\DiscreteMathLab2Test.csproj", "{9B78A4B3-926D-49D1-8637-E52F59567296}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{367D6E5C-2634-4123-BEEC-E2C0C5F23A77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{367D6E5C-2634-4123-BEEC-E2C0C5F23A77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{367D6E5C-2634-4123-BEEC-E2C0C5F23A77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{367D6E5C-2634-4123-BEEC-E2C0C5F23A77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B78A4B3-926D-49D1-8637-E52F59567296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B78A4B3-926D-49D1-8637-E52F59567296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B78A4B3-926D-49D1-8637-E52F59567296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B78A4B3-926D-49D1-8637-E52F59567296}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {42CE4621-7286-4E40-BF70-F42EEF40C080}
+	EndGlobalSection
+EndGlobal

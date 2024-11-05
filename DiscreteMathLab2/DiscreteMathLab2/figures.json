@@ -1,0 +1,29 @@
+{
+  "A": {
+    "type": "rectangle",
+    "x0": 0,
+    "y0": 1.5,
+    "width": 2,
+    "height": 3
+  },
+  "B": {
+    "type": "circle",
+    "x0": -1,
+    "y0": -1,
+    "radius": 2
+  },
+  "C": {
+    "type": "rectangle",
+    "x0": 5,
+    "y0": -1,
+    "width": 2,
+    "height": 4
+  },
+  "D": {
+    "type": "circle",
+    "x0": 2,
+    "y0": 3,
+    "radius": 2
+  }
+}
+

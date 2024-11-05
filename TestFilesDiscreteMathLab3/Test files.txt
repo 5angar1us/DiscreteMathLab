@@ -1,0 +1,25 @@
+
+// Figure
+test_figure1.json
+
+// Figure incorrect type
+test_figure2.json
+
+
+// Figures
+test_figures_collection1.json
+
+// Figures
+test_figures_collection2.json
+
+// empty_file
+empty_file.json
+
+// invalid json
+invalid_json.json
+
+//invalid extention
+test5.txt
+
+//invalid path
+test500.json
