@@ -15,13 +15,13 @@ namespace DiscreteMathLab3.UI.Utils
 
             for (int columnIndex = 0; columnIndex < matrix.NodeCount; columnIndex++)
             {
-                table.AddColumn($"{matrix.NameTemplate.Column}{columnIndex}");
+                table.AddColumn($"{matrix.NameTemplate.Column}{columnIndex + 1}");
             }
 
             for (int rowIndex = 0; rowIndex < matrix.NodeCount; rowIndex++)
             {
                 var cells = new List<Text>() {
-                    new($"{matrix.NameTemplate.Row}{rowIndex}")
+                    new($"{matrix.NameTemplate.Row}{rowIndex+1}")
                 };
 
                 for (int cellIndex = 0; cellIndex < matrix.NodeCount; cellIndex++)
