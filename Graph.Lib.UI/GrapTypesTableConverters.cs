@@ -2,6 +2,7 @@
 using GraphLib.GraphDomain;
 using Spectre.Console;
 using System.Data;
+using System.Linq;
 
 namespace GraphLib.UI
 {
@@ -62,19 +63,25 @@ namespace GraphLib.UI
 
         public static Table ToTable(this IncidentsLists incidentsLists)
         {
-            var sortedItems = incidentsLists.OrderBy(x => x.Edge.From).ToList();
+            var sortedItems = incidentsLists.OrderBy(x => x.Node.Number).ToList();
 
             var table = new Table();
-            table.AddColumn("Рёбро");
-            table.AddColumn("Вершины");
+            
+            table.AddColumn("Вершина");
+            table.AddColumn("Рёбра");
 
             for (int index = 0; index < incidentsLists.Count; index++)
             {
                 var item = sortedItems[index];
-                var edgeLabel = $"{GraphConsts.EDGE_PREFIX}_{index + 1} ( {CreateNodeLable(item.Edge.From)}, {CreateNodeLable(item.Edge.To)} )";
-                var neighbors = string.Join<Node>(" ", item.Neighbors);
 
-                table.AddRow($"{edgeLabel}", neighbors);
+                var nodeLabel = $"{GraphConsts.NODE_PREFIX}_{item.Node.Number}";
+
+
+                var neigborsEagesLabels = item.Neighbors.Select(eadge => $"( {CreateNodeLable(eadge.From)}, {CreateNodeLable(eadge.To)} )").ToArray();
+
+                var neighbors = string.Join<String>(" ", neigborsEagesLabels);
+
+                table.AddRow(nodeLabel, neighbors);
             }
 
             return table;
@@ -91,7 +98,8 @@ namespace GraphLib.UI
 
             foreach (var item in sortedItems)
             {
-                var neighbors = string.Join<Node>(" ", item.Neighbors);
+                var neigborsNodes = item.Neighbors.Select(CreateNodeLable).ToArray();
+                var neighbors = string.Join<String>(" ", neigborsNodes);
                 table.AddRow($"{CreateNodeLable(item.Node)}", neighbors);
             }
 

@@ -125,17 +125,12 @@ public static class GraphConvertorsExtentions
 
         var incidentsListItems = nodes.Select(node =>
         {
-            var currentEdges = edges.Where(edge => edge.From.Equals(node))
+            var noighborsEdges = edges.Where(edge => edge.From.Equals(node) || edge.To.Equals(node))
                 .ToArray();
 
-            var items = currentEdges.Select(edge =>
-            {
-                return new IncidentsListsItem(edge, new[] { edge.From, edge.To });
-            });
+            return new IncidentsListsItem(node, noighborsEdges);
 
-            return items;
         })
-        .SelectMany(x => x)
         .ToArray();
 
         return new IncidentsLists(incidentsListItems);

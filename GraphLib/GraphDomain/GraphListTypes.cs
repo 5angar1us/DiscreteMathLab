@@ -48,7 +48,7 @@ namespace GraphLib.GraphDomain
 
     }
 
-    public record IncidentsListsItem(Edge Edge, Node[] Neighbors);
+    public record IncidentsListsItem(Node Node, Edge[] Neighbors);
 
     public class IncidentsLists : GraphList<IncidentsListsItem>
     {
