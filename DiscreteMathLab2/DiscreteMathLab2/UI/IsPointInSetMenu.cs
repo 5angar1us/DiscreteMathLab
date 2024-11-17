@@ -3,21 +3,18 @@ using Shared.AnsiConsole;
 using Spectre.Console;
 using static DiscreteMathLab2.Domain.SetOperations;
 
-namespace DiscreteMathLab2.Menus
-{
-    public class IsPointInSetMenu
-    {
+namespace DiscreteMathLab2.Menus;
 
-        public void Handle(Figures figures)
-        {
-            var centerX = AnsiConsoleUtils.AskCenterCoordinate("X");
-            var centerY = AnsiConsoleUtils.AskCenterCoordinate("Y");
+public class IsPointInSetMenu {
 
-            var isInSet = IsPointInSet(Point.Create(centerX, centerY), figures);
+    public void Handle(Figures figures) {
+        var centerX = AnsiConsoleUtils.AskCenterCoordinate("X");
+        var centerY = AnsiConsoleUtils.AskCenterCoordinate("Y");
 
-            var setAssignmentMessage = isInSet ? "принадлежит".FormatSuccess() : "не принадлежит".FormatException();
+        var isInSet = IsPointInSet(Point.Create(centerX, centerY), figures);
 
-            AnsiConsole.MarkupLine($"Точка {setAssignmentMessage} множеству.");
-        }
+        var setAssignmentMessage = isInSet ? "принадлежит".FormatSuccess() : "не принадлежит".FormatException();
+
+        AnsiConsole.MarkupLine($"Точка {setAssignmentMessage} множеству.");
     }
 }

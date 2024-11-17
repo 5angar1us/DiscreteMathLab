@@ -1,19 +1,14 @@
-﻿namespace DiscreteMathLab2.UI.InputFigures.FromFile.Parser.Exceptions
-{
-    public class ParseException : Exception
-    {
-        public ParseException()
-        {
-        }
+﻿namespace DiscreteMathLab2.UI.InputFigures.FromFile.Parser.Exceptions;
 
-        public ParseException(string message)
-            : base(message)
-        {
-        }
+public class ParseException : Exception {
+    public ParseException() {
+    }
 
-        public ParseException(string message, Exception inner)
-            : base(message, inner)
-        {
-        }
+    public ParseException(string message)
+        : base(message) {
+    }
+
+    public ParseException(string message, Exception inner)
+        : base(message, inner) {
     }
 }

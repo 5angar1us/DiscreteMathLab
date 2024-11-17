@@ -1,21 +1,18 @@
-﻿using GraphLib.GraphTypes;
-using GraphLib.GraphDomain;
+﻿using GraphLib.GraphDomain;
+using GraphLib.GraphTypes;
 using Spectre.Console;
 
 namespace DiscreteMathLab4.UI;
 
 public record Debug(bool CorrectDegre, bool Connected);
 
-public static class DebugConst
-{
+public static class DebugConst {
     public static Debug DebugNeed = new Debug(false, false);
 }
 
- class Test
-{
+class Test {
 
-    public void Run()
-    {
+    public void Run() {
         // Define three adjacency matrices (graphs)
         List<int[,]> adjacencyMatrices = new List<int[,]>
             {
@@ -90,8 +87,7 @@ public static class DebugConst
 
         var start = 0;
         var cyclestop = adjacencyMatrices.Count;
-        for (int i = start; i < cyclestop; i++)
-        {
+        for (int i = start; i < cyclestop; i++) {
             Console.WriteLine($"graph {i + 1}:");
             int[,] adjacencymatrix = adjacencyMatrices[i];
 
@@ -111,14 +107,11 @@ public static class DebugConst
     }
 
 
-    private static void WriteDebugIfNeeded(bool isNeeded, string message, bool isSpaceAfter)
-    {
-        if (isNeeded)
-        {
+    private static void WriteDebugIfNeeded(bool isNeeded, string message, bool isSpaceAfter) {
+        if (isNeeded) {
             Console.WriteLine(message);
 
-            if (isSpaceAfter)
-            {
+            if (isSpaceAfter) {
                 Console.WriteLine();
             }
         }

@@ -2,10 +2,8 @@
 
 namespace GraphLib.UI.InputMatrix.Manual;
 
-internal class HideCursor : IDisposable
-{
-    public HideCursor(IAnsiConsole console)
-    {
+internal class HideCursor : IDisposable {
+    public HideCursor(IAnsiConsole console) {
 
         this.console = console;
         console.Cursor.Show(false);
@@ -13,8 +11,7 @@ internal class HideCursor : IDisposable
 
     private readonly IAnsiConsole console;
 
-    public void Dispose()
-    {
+    public void Dispose() {
         console.Cursor.Show(true);
     }
 }

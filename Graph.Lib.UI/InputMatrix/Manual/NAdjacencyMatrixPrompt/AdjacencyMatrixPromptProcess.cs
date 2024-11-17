@@ -4,10 +4,8 @@ using Spectre.Console;
 
 namespace GraphLib.UI.InputMatrix.Manual.NAdjacencyMatrixPrompt;
 
-internal class AdjacencyMatrixPromptProcess : IPromptProcess<AdjacencyMatrix>
-{
-    public AdjacencyMatrixPromptProcess(InputAdjacencyMatrixTypes sourceMatrix)
-    {
+internal class AdjacencyMatrixPromptProcess : IPromptProcess<AdjacencyMatrix> {
+    public AdjacencyMatrixPromptProcess(InputAdjacencyMatrixTypes sourceMatrix) {
         adjacencyMatrixFillPrompt = new AdjacencyMatrixFillPrompt(sourceMatrix);
         this.sourceMatrix = sourceMatrix;
     }
@@ -15,18 +13,15 @@ internal class AdjacencyMatrixPromptProcess : IPromptProcess<AdjacencyMatrix>
     private readonly InputAdjacencyMatrixTypes sourceMatrix;
     private readonly AdjacencyMatrixFillPrompt adjacencyMatrixFillPrompt;
 
-    public AdjacencyMatrix Show(IAnsiConsole console)
-    {
+    public AdjacencyMatrix Show(IAnsiConsole console) {
         var matrixRaw = new InputAdjacencyMatrixTypes(sourceMatrix);
 
-        while (true)
-        {
+        while (true) {
 
             var matrix = adjacencyMatrixFillPrompt.Show(console)
                 .ToAdjacencyMatrix(AdjacencyMatrixNamePrefixes.Create());
 
-            if (matrix.IsFailure)
-            {
+            if (matrix.IsFailure) {
                 console.Write(matrix.ValidationResult);
                 continue;
             }

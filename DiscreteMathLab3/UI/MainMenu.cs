@@ -1,41 +1,36 @@
-﻿using Spectre.Console;
-using Ardalis.SmartEnum;
-using Shared;
-using Shared.AnsiConsole;
+﻿using Ardalis.SmartEnum;
 using GraphLib.GraphTypes;
 using GraphLib.UI;
+using Shared;
+using Shared.AnsiConsole;
+using Spectre.Console;
 
 namespace DiscreteMathLab3.UI;
 
-public class MainMenu
-{
+public class MainMenu {
     private Optional<Graph> _graph = Optional<Graph>.Empty();
 
     private ShowViewsMenu viewsMenu { get; init; }
     private InputMatrixMenu parseMatrixMenu { get; init; }
 
-private IAnsiConsole console;
+    private IAnsiConsole console;
 
-    public MainMenu(IAnsiConsole console)
-    {
+    public MainMenu(IAnsiConsole console) {
         this.viewsMenu = new(console);
         this.parseMatrixMenu = new(console);
         this.console = console;
     }
-    public void Run()
-    {
+    public void Run() {
         RunLoop();
     }
 
 
-    private sealed class MenuOption : SmartEnum<MenuOption>
-    {
+    private sealed class MenuOption : SmartEnum<MenuOption> {
         public static readonly MenuOption InputAdjacencyMatrix = new(nameof(InputAdjacencyMatrix), 1, "Ввод графа с помощью матрицы смежности");
         public static readonly MenuOption ShowViews = new(nameof(ShowViews), 2, "Показать представления графа");
         public static readonly MenuOption Exit = new(nameof(Exit), 3, "Выход");
 
-        private MenuOption(string name, int value, string display) : base(name, value)
-        {
+        private MenuOption(string name, int value, string display) : base(name, value) {
             Display = display;
         }
 
@@ -43,57 +38,46 @@ private IAnsiConsole console;
 
     }
 
-    private void RunLoop()
-    {
+    private void RunLoop() {
         var isExit = false;
-        while (true)
-        {
+        while (true) {
             var choice = console.Prompt(
-                new SelectionPrompt<MenuOption>()
-                { Converter = value => value.Display }
+                new SelectionPrompt<MenuOption>() { Converter = value => value.Display }
                     .Title("[bold]Главное меню[/]")
                     .PageSize(10)
                     .AddChoices(SmartEnumHelper.SortSmartEnumByValue<MenuOption>()));
 
 
             choice
-             .When(MenuOption.InputAdjacencyMatrix).Then(() =>
-             {
+             .When(MenuOption.InputAdjacencyMatrix).Then(() => {
 
                  var isOverwriteGraph = false;
 
-                 if (_graph.HasValue)
-                 {
+                 if (_graph.HasValue) {
                      isOverwriteGraph = console.Prompt(
-                         new SelectionPrompt<bool>
-                         { Converter = value => value ? "Да" : "Нет" }
+                         new SelectionPrompt<bool> { Converter = value => value ? "Да" : "Нет" }
                              .Title("Матрица уже была введена. Продолжить?")
                              .AddChoices(true, false));
 
 
                  }
 
-                 if (isOverwriteGraph || _graph.IsEmpty)
-                 {
+                 if (isOverwriteGraph || _graph.IsEmpty) {
                      HandleRequesGraph();
                  }
 
              })
-             .When(MenuOption.ShowViews).Then(() =>
-             {
-                 if(_graph.IsEmpty)
-                 {
+             .When(MenuOption.ShowViews).Then(() => {
+                 if (_graph.IsEmpty) {
                      console.Write("Граф ещё не введён".FormatException());
                      HandleRequesGraph();
                  }
-                 else
-                 {
+                 else {
                      viewsMenu.Show(_graph.Value);
                  }
-                
+
              })
-             .When(MenuOption.Exit).Then(() =>
-             {
+             .When(MenuOption.Exit).Then(() => {
                  isExit = true;
              });
 
@@ -101,8 +85,7 @@ private IAnsiConsole console;
         }
     }
 
-    private void HandleRequesGraph()
-    {
+    private void HandleRequesGraph() {
         _graph = parseMatrixMenu.RequestGraph();
     }
 }

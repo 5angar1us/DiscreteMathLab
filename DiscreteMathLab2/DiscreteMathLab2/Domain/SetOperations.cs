@@ -1,9 +1,7 @@
 ﻿namespace DiscreteMathLab2.Domain;
 
-public static class SetOperations
-{
-    public static bool IsPointInSet(Point point, Figures figures)
-    {
+public static class SetOperations {
+    public static bool IsPointInSet(Point point, Figures figures) {
 
         bool in_A = figures.GetBy(EFigures.A).Contains(point);
         bool in_B = figures.GetBy(EFigures.B).Contains(point);
@@ -12,7 +10,7 @@ public static class SetOperations
 
 
         // f = (A ∩ (¬B ∪ D)) ∪ C 
-        bool f = in_A && (IsNot(in_B) || in_D )|| in_C;
+        bool f = in_A && (IsNot(in_B) || in_D) || in_C;
 
         return f;
     }

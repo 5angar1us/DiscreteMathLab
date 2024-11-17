@@ -1,42 +1,32 @@
 ﻿using Spectre.Console;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DiscreteMathLab
-{
-    internal class Render
-    {
-        public static void View(List<TruthTableItem> trughTable)
-        {
-            var tableDisplay = new Table();
+namespace DiscreteMathLab;
 
-            tableDisplay.AddColumn("a");
-            tableDisplay.AddColumn("b");
-            tableDisplay.AddColumn("c");
-            tableDisplay.AddColumn("d");
-            tableDisplay.AddColumn("e");
-            tableDisplay.AddColumn("f");
+internal class Render {
+    public static void View(List<TruthTableItem> trughTable) {
+        var tableDisplay = new Table();
 
-            foreach (var row in trughTable)
-            {
-                var rowValues = row.GetAll()
-                    .Select(BoolToInt)
-                    .ToArray();
+        tableDisplay.AddColumn("a");
+        tableDisplay.AddColumn("b");
+        tableDisplay.AddColumn("c");
+        tableDisplay.AddColumn("d");
+        tableDisplay.AddColumn("e");
+        tableDisplay.AddColumn("f");
 
-                tableDisplay.AddRow(
-                   rowValues
-                );
-            }
+        foreach (var row in trughTable) {
+            var rowValues = row.GetAll()
+                .Select(BoolToInt)
+                .ToArray();
 
-            AnsiConsole.Write(tableDisplay);
+            tableDisplay.AddRow(
+               rowValues
+            );
         }
 
-        static string BoolToInt(bool value)
-        {
-            return value ? "1" : "0";
-        }
+        AnsiConsole.Write(tableDisplay);
+    }
+
+    static string BoolToInt(bool value) {
+        return value ? "1" : "0";
     }
 }

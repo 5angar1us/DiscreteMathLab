@@ -7,20 +7,15 @@ using Spectre.Console;
 namespace GraphLib.UI.InputMatrix.Manual;
 
 
-public class ManualInputMatrix : IPromptProcess<Optional<AdjacencyMatrix>>
-{
-    public Optional<AdjacencyMatrix> Show(IAnsiConsole console)
-    {
+public class ManualInputMatrix : IPromptProcess<Optional<AdjacencyMatrix>> {
+    public Optional<AdjacencyMatrix> Show(IAnsiConsole console) {
         var size = console.Prompt(
                 new TextPrompt<int>("Введите размер матрицы (больше 1):")
-                .Validate(parsedSize =>
-                {
-                    if (parsedSize >= 2 && parsedSize <= 10)
-                    {
+                .Validate(parsedSize => {
+                    if (parsedSize >= 2 && parsedSize <= 10) {
                         return ValidationResult.Success();
                     }
-                    else
-                    {
+                    else {
                         return ValidationResult.Error("Неверный размер. Размер должен быть не менее 2.".FormatException());
                     }
                 })
@@ -33,8 +28,7 @@ public class ManualInputMatrix : IPromptProcess<Optional<AdjacencyMatrix>>
         new CliDisplay(console).Show(matrix);
 
         var isMatrixCorrect = console.Prompt(
-                new SelectionPrompt<bool>
-                {
+                new SelectionPrompt<bool> {
                     Converter = value => value ? "Да" : "Нет"
                 }
                 .Title("Вас устраивает этот граф в виде матрицы смежности?")

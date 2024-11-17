@@ -3,56 +3,48 @@ using Shared;
 using Shared.AnsiConsole;
 using Spectre.Console;
 
-namespace GraphLib.UI.InputMatrix.FromFile
-{
-    public class FromFileInputMatrix : IPromptProcess<Optional<AdjacencyMatrix>>
-    {
-        private const string targetExtention = ".txt";
-        private readonly string DEFAULT_FIGURE_FILENAME = Path.Combine(Environment.CurrentDirectory, "AdjacencyMatrix" + targetExtention);
-        private readonly ParserMatrixFromFile parserMatrixFromFile = new ParserMatrixFromFile();
-        private readonly PathValidator pathValidator = new PathValidator();
+namespace GraphLib.UI.InputMatrix.FromFile;
 
-        public Optional<AdjacencyMatrix> Show(IAnsiConsole console)
-        {
+public class FromFileInputMatrix : IPromptProcess<Optional<AdjacencyMatrix>> {
+    private const string targetExtention = ".txt";
+    private readonly string DEFAULT_FIGURE_FILENAME = Path.Combine(Environment.CurrentDirectory, "AdjacencyMatrix" + targetExtention);
+    private readonly ParserMatrixFromFile parserMatrixFromFile = new ParserMatrixFromFile();
+    private readonly PathValidator pathValidator = new PathValidator();
 
-            var pathPrompt = new TextPrompt<string>("Введите путь к файлу с матрицей смежности: ")
-                .DefaultValue(DEFAULT_FIGURE_FILENAME)
-                 .Validate(path => pathValidator.Validate(path, targetExtention));
+    public Optional<AdjacencyMatrix> Show(IAnsiConsole console) {
 
-            var filePath = console.Prompt(pathPrompt);
+        var pathPrompt = new TextPrompt<string>("Введите путь к файлу с матрицей смежности: ")
+            .DefaultValue(DEFAULT_FIGURE_FILENAME)
+             .Validate(path => pathValidator.Validate(path, targetExtention));
 
-            try
-            {
-                var matrix = parserMatrixFromFile.Parse(filePath);
+        var filePath = console.Prompt(pathPrompt);
 
-                if (matrix.IsFailure)
-                {
-                    console.Write(matrix.ValidationResult);
-                    goto FailureCase;
-                }
+        try {
+            var matrix = parserMatrixFromFile.Parse(filePath);
 
-                console.WriteLine();
-                console.MarkupLine("Матрицы смежности успешно загружена".FormatSuccess());
-
-                return matrix.Value;
-
-            }
-            catch (UnauthorizedAccessException uaEx)
-            {
-                console.MarkupLine($"Нет доступа к файлу: {uaEx.Message}".FormatException());
-            }
-            catch (IOException ioEx)
-            {
-                console.MarkupLine($"Ошибка ввода-вывода при работе с файлом: {ioEx.Message}".FormatException());
-            }
-            catch (Exception ex)
-            {
-                console.MarkupLine($"Не обработанная ошибка загрузки из файла: {ex.Message}".FormatException());
+            if (matrix.IsFailure) {
+                console.Write(matrix.ValidationResult);
+                goto FailureCase;
             }
 
-            FailureCase: return Optional<AdjacencyMatrix>.Empty();
+            console.WriteLine();
+            console.MarkupLine("Матрицы смежности успешно загружена".FormatSuccess());
+
+            return matrix.Value;
+
+        }
+        catch (UnauthorizedAccessException uaEx) {
+            console.MarkupLine($"Нет доступа к файлу: {uaEx.Message}".FormatException());
+        }
+        catch (IOException ioEx) {
+            console.MarkupLine($"Ошибка ввода-вывода при работе с файлом: {ioEx.Message}".FormatException());
+        }
+        catch (Exception ex) {
+            console.MarkupLine($"Не обработанная ошибка загрузки из файла: {ex.Message}".FormatException());
         }
 
-       
+    FailureCase: return Optional<AdjacencyMatrix>.Empty();
     }
+
+
 }

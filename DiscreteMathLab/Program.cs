@@ -1,27 +1,21 @@
-﻿using System.Text;
-using DiscreteMathLab;
+﻿using DiscreteMathLab;
 using Spectre.Console;
 using static Shared.BooleanUtils;
 
 
-class Program
-{
-    static void Main(string[] args)
-    {
+class Program {
+    static void Main(string[] args) {
         IEnumerable<TruthTableItem> truthTable = GenerateTruthTable();
 
         DNFBuilder sdnfBuilder = new DNFBuilder("|", "&", (value) => value);
         DNFBuilder sknfBuilder = new DNFBuilder("&", "|", IsNot);
 
-        foreach (var row in truthTable)
-        {
+        foreach (var row in truthTable) {
             var isSDNF = row.F;
-            if (isSDNF)
-            {
+            if (isSDNF) {
                 sdnfBuilder.AppendTerm(row);
             }
-            else
-            {
+            else {
                 sknfBuilder.AppendTerm(row);
             }
         }
@@ -32,25 +26,21 @@ class Program
         AnsiConsole.MarkupLine($"Совершенная конъюнктивная нормальная форма (СКНФ): {Environment.NewLine}{sknfBuilder.ToString()}");
     }
 
-    static IEnumerable<InputVariables> CreateInputVariables()
-    {
+    static IEnumerable<InputVariables> CreateInputVariables() {
         // bit is 0 or 1
         // int = 4 byte = 32 bit
         // 2^5 = 32 комбинаций
         int border = (int)Math.Pow(2, InputVariables.variablesCount);
 
-        for (int i = 0; i < border; i++)
-        {
+        for (int i = 0; i < border; i++) {
             yield return new InputVariables(i);
         }
     }
 
-    static IEnumerable<TruthTableItem> GenerateTruthTable()
-    {
+    static IEnumerable<TruthTableItem> GenerateTruthTable() {
         var inputVariables = CreateInputVariables();
 
-        var truthTable = inputVariables.Select(x =>
-        {
+        var truthTable = inputVariables.Select(x => {
             var a = x.A;
             var b = x.B;
             var c = x.C;
@@ -60,8 +50,7 @@ class Program
             // f = (a ∧ b) ∨ ¬c ∨ (¬d ∧ e)
             bool f = (a && b) || !c || (!d && e);
 
-            return new TruthTableItem
-            {
+            return new TruthTableItem {
                 A = a,
                 B = b,
                 C = c,
@@ -74,6 +63,6 @@ class Program
         return truthTable;
     }
 
-    
+
 }
 
