@@ -57,7 +57,6 @@ public static class GraphConvertorsExtentions {
             incidentMatrix[i] = new int[edgeCount];
         }
 
-        var adjacencyMatrix = graph.ToInputAdjacencyMatrix();
         var nodeAndIndexPairs = GetNodeIndexPairs(graph);
 
         for (int edgeIndex = 0; edgeIndex < edgeCount; edgeIndex++) {
@@ -65,16 +64,8 @@ public static class GraphConvertorsExtentions {
             int vertex1Index = nodeAndIndexPairs[edge.From];
             int vertex2Index = nodeAndIndexPairs[edge.To];
 
-
-            var isMirrorElementsMatch = adjacencyMatrix[vertex1Index, vertex2Index] == adjacencyMatrix[vertex2Index, vertex1Index];
-            if (isMirrorElementsMatch) {
-                incidentMatrix[vertex1Index][edgeIndex] = 1;
-                incidentMatrix[vertex2Index][edgeIndex] = 1;
-            }
-            else {
-                incidentMatrix[vertex1Index][edgeIndex] = -1;
-                incidentMatrix[vertex2Index][edgeIndex] = 1;
-            }
+            incidentMatrix[vertex1Index][edgeIndex] = 1;
+            incidentMatrix[vertex2Index][edgeIndex] = 1;
         }
 
         return new IncidentMatrix(incidentMatrix, new IncidentMatrixNamePrefixs(GraphConsts.NODE_PREFIX + "_", GraphConsts.EDGE_PREFIX + "_"));
