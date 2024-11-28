@@ -1,5 +1,6 @@
 ﻿using Ardalis.SmartEnum;
 using GraphLib.GraphDomain;
+using GraphLib.GraphDomain.GraphTypes;
 using GraphLib.GraphTypes;
 using GraphLib.UI.InputMatrix.FromFile;
 using GraphLib.UI.InputMatrix.Manual;

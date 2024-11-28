@@ -1,4 +1,5 @@
 ﻿using Ardalis.SmartEnum;
+using GraphLib.GraphDomain.GraphTypes;
 using GraphLib.GraphTypes;
 using GraphLib.UI;
 using Shared;

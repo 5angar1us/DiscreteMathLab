@@ -1,8 +1,7 @@
 ﻿using Dunet;
-using GraphLib.GraphDomain.GraphTypes;
 using Shared;
 
-namespace GraphLib.GraphTypes;
+namespace GraphLib.GraphDomain.GraphTypes;
 
 public sealed partial class Graph {
     private List<Edge> Edges { get; init; }

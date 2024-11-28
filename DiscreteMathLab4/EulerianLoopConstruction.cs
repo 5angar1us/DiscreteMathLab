@@ -1,4 +1,4 @@
-﻿using GraphLib.GraphTypes;
+﻿using GraphLib.GraphDomain.GraphTypes;
 using Spectre.Console;
 
 namespace DiscreteMathLab4;

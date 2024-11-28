@@ -1,7 +1,6 @@
 ﻿
 using GraphLib;
 using GraphLib.GraphDomain.GraphTypes;
-using GraphLib.GraphTypes;
 using Shared;
 using Spectre.Console;
 
