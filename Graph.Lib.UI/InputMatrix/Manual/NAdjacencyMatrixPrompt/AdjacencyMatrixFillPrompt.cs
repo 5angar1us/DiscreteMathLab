@@ -4,7 +4,7 @@ using Spectre.Console;
 
 namespace GraphLib.UI.InputMatrix.Manual.NAdjacencyMatrixPrompt;
 
-internal class AdjacencyMatrixFillPrompt  {
+internal class AdjacencyMatrixFillPrompt {
 
     private enum Direction {
         Up,

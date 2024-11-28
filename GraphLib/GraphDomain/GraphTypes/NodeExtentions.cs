@@ -1,6 +1,4 @@
-﻿using GraphLib.GraphTypes;
-
-namespace GraphLib.GraphDomain.GraphTypes;
+﻿namespace GraphLib.GraphDomain.GraphTypes;
 
 public static class NodeExtentions {
 
