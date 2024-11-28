@@ -8,6 +8,12 @@ using Spectre.Console;
 namespace DiscreteMathLab4;
 
 public class EulerCycleFinder {
+
+
+    public class EulerCycleException : Exception {
+        public EulerCycleException(string message) : base(message) { }
+    }
+
     public static Optional<List<string>> FindEulerCycle(Graph graph) {
         // check For Euler Path
         if (IsNot(IsAllNonZeroConnected(graph)))
@@ -22,8 +28,7 @@ public class EulerCycleFinder {
         var path = GetPath(tempGraph);
 
         if (IsNot(AllEdgesUsed(tempGraph))) {
-            AnsiConsole.WriteLine("Не все рёбра используются");
-            return Optional<List<string>>.Empty();
+            throw new EulerCycleException("Не все рёбра используются.");
         }
 
         path.Reverse(); // The path is constructed in reverse
@@ -87,7 +92,7 @@ public class EulerCycleFinder {
         var currentNode = graph.GetNodes().FirstOrDefault(node => node.HasOneOrMoreConnection(graph));
 
         if (currentNode == null)
-            return path;
+            throw new EulerCycleException("Не найдена нода для страта поиска эйлерового пути");
 
         var stack = new Stack<Node>();
         stack.Push(currentNode);
