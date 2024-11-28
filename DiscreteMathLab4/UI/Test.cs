@@ -13,7 +13,7 @@ public static class DebugConst {
 class Test {
 
     public void Run() {
-        // Define three adjacency matrices (graphs)
+
         List<int[,]> adjacencyMatrices = new List<int[,]>
             {
                 // Graph 1: Euler cycle exists

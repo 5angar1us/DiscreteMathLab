@@ -22,11 +22,8 @@ public class EulerCycleFinder {
         if (IsNot(IsAllDegreeEven(graph)))
             return Optional<List<string>>.Empty();
 
-
         var tempGraph = new Graph(graph.GetEdges());
-
-        var path = GetPath(tempGraph);
-
+        var path = FindEulerianPath(tempGraph);
         if (IsNot(AllEdgesUsed(tempGraph))) {
             throw new EulerCycleException("Не все рёбра используются.");
         }
@@ -86,15 +83,17 @@ public class EulerCycleFinder {
         return true;
     }
 
-    //построения эйлерова пути
-    private static List<Node> GetPath(Graph graph) {
-        var path = new List<Node>();
+
+    private static List<Node> FindEulerianPath(Graph graph) {
+
         var currentNode = graph.GetNodes().FirstOrDefault(node => node.HasOneOrMoreConnection(graph));
 
         if (currentNode == null)
             throw new EulerCycleException("Не найдена нода для страта поиска эйлерового пути");
 
+        var path = new List<Node>();
         var stack = new Stack<Node>();
+
         stack.Push(currentNode);
 
         while (stack.Any()) {
