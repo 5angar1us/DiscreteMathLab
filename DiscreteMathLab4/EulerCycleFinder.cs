@@ -32,7 +32,7 @@ public class EulerCycleFinder {
 
     private static bool IsAllNonZeroConnected(Graph graph) {
         var nodes = graph.GetNodes();
-        var startNode = nodes.FirstOrDefault(n => n.HasOneConnection(graph));
+        var startNode = nodes.FirstOrDefault(n => n.HasOneOrMoreConnection(graph));
 
         if (startNode == null)
             return true;
@@ -43,7 +43,7 @@ public class EulerCycleFinder {
 
         // Check if all vertices with non-zero degree are visited
         foreach (var node in nodes) {
-            if (node.HasOneConnection(graph) && !visited.Contains(node))
+            if (node.HasOneOrMoreConnection(graph) && !visited.Contains(node))
                 return false;
         }
 
@@ -84,7 +84,7 @@ public class EulerCycleFinder {
     //построения эйлерова пути
     private static List<Node> GetPath(Graph graph) {
         var path = new List<Node>();
-        var currentNode = graph.GetNodes().FirstOrDefault(node => node.HasOneConnection(graph));
+        var currentNode = graph.GetNodes().FirstOrDefault(node => node.HasOneOrMoreConnection(graph));
 
         if (currentNode == null)
             return path;
